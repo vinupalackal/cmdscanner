@@ -1,0 +1,20 @@
+{
+  "providers": [
+    {
+      "name": "rdk-scripts",
+      "list": ["sh", "-c", "ls /lib/rdk/*.sh /usr/ccsp/*.sh 2>/dev/null"],
+      "help": ["{name}", "--help"]
+    },
+    {
+      "name": "sbin-tools",
+      "list": ["sh", "-c", "ls /usr/sbin"],
+      "help": ["{name}", "-h"]
+    }
+  ],
+  "risk": {
+    "destructive": ["rdkfwupgrader", "*FactoryReset*", "*factory_reset*", "nvram_erase*"],
+    "state_changing": ["psmcli", "syscfg", "sysevent", "rbuscli"],
+    "replace": false
+  },
+  "never_probe": ["rdkfwupgrader", "*FactoryReset*", "*.sh"]
+}
